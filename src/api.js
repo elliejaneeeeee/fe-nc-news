@@ -18,11 +18,18 @@ export const fetchAllTopics = () => {
   })
 };
 
-
 export const fetchArticleById = (articleId) => {
   return articlesAPI.get(`articles/${articleId}`)
   .then(({ data }) => {
     return data.article;
+  })
+};
+
+export const fetchCommentsByArticle = (article_id) => {
+  return articlesAPI.get(`articles/${article_id}/comments`)
+  .then(({ data }) => {
+    const {comments} = data
+    return comments
   })
 };
 

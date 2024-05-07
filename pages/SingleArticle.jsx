@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchArticleById } from '../src/api'
 import Article from '../components/Article'
-import TopicCard from '../components/TopicCard'
+import Comments from '../components/Comments'
 
 const SingleArticle = () => {
-  const [SingleArticle, setSingleArticle] = useState([])
+  const [singleArticle, setSingleArticle] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   let { article_id } = useParams()
@@ -24,7 +24,10 @@ const SingleArticle = () => {
   }
 
   return (
-    <Article SingleArticle={SingleArticle}/>
+    <>
+      <Article singleArticle={singleArticle}/>
+      <Comments article_id={article_id}/>
+    </>
   )
 }
 
