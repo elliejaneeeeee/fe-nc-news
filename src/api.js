@@ -11,4 +11,18 @@ export const fetchAllArticles = () => {
   })
 };
 
+export const fetchAllTopics = () => {
+  return articlesAPI.get(`topics`)
+  .then(({ data }) => {
+    return data.topics;
+  })
+};
+
+
+export const fetchArticleById = (articleId) => {
+  return articlesAPI.get(`articles/${articleId}`)
+  .then(({ data }) => {
+    return data.article;
+  })
+};
 
