@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Articles from "../pages/Articles";
 import LandingPage from "../pages/LandingPage";
 import SingleArticle from "../pages/SingleArticle";
+import ErrorPage from "../pages/ErrorPage";
 
 import { fetchAllArticles, fetchAllTopics } from "./api";
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/" element={<LandingPage articles={articles} topics={topics} />} />
         <Route path="/articles" element={<Articles articles={articles} />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
 
       <Footer />
