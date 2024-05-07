@@ -1,17 +1,17 @@
 import React from 'react'
 
-const SingleArticle = ({ SingleArticle }) => {
+const SingleArticle = ({ singleArticle }) => {
   return (
     <>
-        <p className='topic-card'>{SingleArticle.topic}</p>
+        <p className='topic-card'>{singleArticle.topic}</p>
 
         <div className='single-article'>
-          <h2>{SingleArticle.title}</h2>
-          <img src={SingleArticle.article_img_url} />
-          <p>{SingleArticle.body}</p>
+          <h2>{singleArticle.title}</h2>
+          <img src={singleArticle.article_img_url} />
+          <p>{singleArticle.body}</p>
+          <p>{singleArticle.author}</p>
         </div>
 
-        <p>{SingleArticle.author}</p>
     </>
   )
 }
