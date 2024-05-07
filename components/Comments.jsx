@@ -15,7 +15,7 @@ const Comments = ({ article_id }) => {
   return (
     <div className='comments-container'>
         {comments.map((comment) => {
-            return <CommentCard comment={comment} />
+            return <CommentCard key={comment.comment_id} comment={comment} />
         })}
     </div>
   )

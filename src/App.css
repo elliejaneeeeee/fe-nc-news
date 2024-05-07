@@ -87,19 +87,20 @@
     margin-right: 0.5rem;
 }
 
-.comment-card button {
+/* .comment-card button {
     border: none;
     background-color: inherit;
+} */
+
+.comment-time {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    display: inline;
 }
 
-.votes-dislike {
+.votes {
+    display: block;
     margin: 0;
-    color: red;
-}
-
-.votes-like {
-    margin: 0;
-    color: blue;
 }
 
 
