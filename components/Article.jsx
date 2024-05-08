@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {updateArticleVotes} from '../src/api'
 import { Navigate } from 'react-router-dom'
 
