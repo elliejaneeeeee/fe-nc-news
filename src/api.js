@@ -48,6 +48,9 @@ export const postComment = (articleId, comment) => {
   .then((res) => {
     return res
   })
+  .catch((err) => {
+    throw err
+  })
 }
 
 export const deleteComment = (commentId) => {
@@ -56,6 +59,6 @@ export const deleteComment = (commentId) => {
     return res
   })
   .catch((err) => {
-    return err
+    throw err
   })
 }
