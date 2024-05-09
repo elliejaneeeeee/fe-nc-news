@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import ExpandComment from "./ExpandComment";
 import { postComment } from "../src/api";
 
-const CommentForm = ({ article_id, currentUser, setComments, comments }) => {
+const CommentForm = ({ article_id, currentUser, setComments, comments, setIsError }) => {
   const [commentInput, setCommentInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [error, setError] = useState(false);
+  const [typeError, setTypeError] = useState(false);
   const [success, setSuccess] = useState(false);
 
   const handleCommentInput = (e) => {
@@ -15,7 +15,7 @@ const CommentForm = ({ article_id, currentUser, setComments, comments }) => {
   const handleCommentPost = (e) => {
     e.preventDefault()
     if (commentInput === "") {
-      setError(true)
+      setTypeError(true)
       setIsOpen(true)
     }
     else {
@@ -25,12 +25,19 @@ const CommentForm = ({ article_id, currentUser, setComments, comments }) => {
         username: currentUser,
         body: commentInput
       }
-      setComments([newComment, ...comments])
+      
+      postComment(article_id, newComment)
+      .then((res) => {
+        setSuccess(true)
+        setComments([newComment, ...comments])
+      })
+      .catch((err) => {
+        setIsError(true)
+      })
+
       setCommentInput("")
       setIsOpen(false)
-      setError(false)
-      setSuccess(true)
-      postComment(article_id, newComment)
+      setTypeError(false)
     }
   }
 
@@ -45,7 +52,7 @@ const CommentForm = ({ article_id, currentUser, setComments, comments }) => {
           onChange={handleCommentInput}
           onClick={() => setIsOpen(true)}
         ></input>
-        {error && <div className="error">This field is required!</div>}
+        {typeError && <div className="error">This field is required!</div>}
         {success && <div className="success">Success!</div>}
 
         <ExpandComment isOpen={isOpen}>

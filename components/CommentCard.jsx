@@ -2,23 +2,24 @@ import React, { useState } from "react";
 import { convertTime } from "../utils/convertTime";
 import { deleteComment } from "../src/api";
 
-const CommentCard = ({
-  comment,
-  currentUser,
-  setComments,
-  setCommentDeleted,
-}) => {
+const CommentCard = ({ comment, currentUser, setComments, setCommentDeleted, setIsError}) => {
   const randomId = Math.floor(Math.random() * 50);
   const timeStamp = convertTime(comment.created_at);
 
   const handleDeleteComment = (e) => {
     const response = confirm("Are you sure you want to delete your comment?");
     if (response) {
-      setCommentDeleted(true);
-      setComments((prevComments) => {
-        return prevComments.filter((c) => c.comment_id !== comment.comment_id);
-      });
-      deleteComment(comment.comment_id);
+      deleteComment(comment.comment_id)
+      .then((res) => {
+        setComments((prevComments) => {
+          return prevComments.filter((c) => c.comment_id !== comment.comment_id);
+        });
+        setCommentDeleted(true)
+      })
+      .catch((err) => {
+        setCommentDeleted(false);
+        setIsError(true)
+      })
     }
   };
 
