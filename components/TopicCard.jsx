@@ -1,8 +1,9 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const TopicCard = ({ topic }) => {
   return (
-      <p className='topic-card'>{topic.slug}</p>
+      <NavLink to={`/topics/${topic.slug}`} className='topic-card'>{topic.slug}</NavLink>
   )
 }
 
