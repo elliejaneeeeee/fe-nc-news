@@ -1,32 +1,32 @@
 import axios from 'axios';
 
-const articlesAPI = axios.create({
+const newsAPI = axios.create({
   baseURL: "https://be-nc-news-2e46.onrender.com/api/",
 });
 
 export const fetchAllArticles = () => {
-  return articlesAPI.get(`articles`)
+  return newsAPI.get(`articles`)
   .then(({ data }) => {
     return data.articles;
   })
 };
 
 export const fetchAllTopics = () => {
-  return articlesAPI.get(`topics`)
+  return newsAPI.get(`topics`)
   .then(({ data }) => {
     return data.topics;
   })
 };
 
 export const fetchArticleById = (articleId) => {
-  return articlesAPI.get(`articles/${articleId}`)
+  return newsAPI.get(`articles/${articleId}`)
   .then(({ data }) => {
     return data.article;
   })
 };
 
 export const fetchCommentsByArticle = (article_id) => {
-  return articlesAPI.get(`articles/${article_id}/comments`)
+  return newsAPI.get(`articles/${article_id}/comments`)
   .then(({ data }) => {
     const {comments} = data
     return comments
@@ -34,12 +34,18 @@ export const fetchCommentsByArticle = (article_id) => {
 };
 
 export const updateArticleVotes = (article_id, num) => {
-  return articlesAPI.patch(`articles/${article_id}`, {
-      inc_votes: num
-    })
+  return newsAPI.patch(`articles/${article_id}`, {
+    inc_votes: num
+  })
   .then(({ data } ) => {
     const {article} = data
     return article
   })
 };
 
+export const postComment = (article_id, comment) => {
+  return newsAPI.post(`articles/${article_id}/comments`, comment)
+  .then((res) => {
+    return res
+  })
+}

@@ -8,7 +8,7 @@ const CommentCard = ({ comment }) => {
 
 
   return (
-    <div className='comment-card'>
+    <div className='comment-card' >
         <img src={`https://i.pravatar.cc/48?img=${randomId}`} />
         <p>{comment.author}</p>
         <p className='comment-time'>{timeStamp}</p>

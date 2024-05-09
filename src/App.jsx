@@ -7,6 +7,7 @@ import Articles from "../pages/Articles";
 import LandingPage from "../pages/LandingPage";
 import SingleArticle from "../pages/SingleArticle";
 import ErrorPage from "../pages/ErrorPage";
+import SignIn from "../pages/SignIn";
 
 import { fetchAllArticles, fetchAllTopics } from "./api";
 
@@ -14,6 +15,7 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [currentUser, setCurrentUser] = useState('jessjelly')
 
   useEffect(() => {
     setIsLoading(true)
@@ -44,7 +46,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage articles={articles} topics={topics} />} />
         <Route path="/articles" element={<Articles articles={articles} />} />
-        <Route path="/articles/:article_id" element={<SingleArticle />} />
+        <Route path="/articles/:article_id" element={<SingleArticle currentUser={currentUser}/>} />
+        <Route path="/sign-in" element={<SignIn />} />
         <Route path="/error" element={<ErrorPage />} />
       </Routes>
 
