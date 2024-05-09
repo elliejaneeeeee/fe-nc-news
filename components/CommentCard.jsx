@@ -1,23 +1,48 @@
-import React, { useState } from 'react'
-import { convertTime } from '../utils/convertTime';
+import React, { useState } from "react";
+import { convertTime } from "../utils/convertTime";
+import { deleteComment } from "../src/api";
 
-const CommentCard = ({ comment }) => {
-  const randomId = Math.floor(Math.random() * 50)
+const CommentCard = ({
+  comment,
+  currentUser,
+  setComments,
+  setCommentDeleted,
+}) => {
+  const randomId = Math.floor(Math.random() * 50);
+  const timeStamp = convertTime(comment.created_at);
 
-  const timeStamp = convertTime(comment.created_at)
-
+  const handleDeleteComment = (e) => {
+    const response = confirm("Are you sure you want to delete your comment?");
+    if (response) {
+      setCommentDeleted(true);
+      setComments((prevComments) => {
+        return prevComments.filter((c) => c.comment_id !== comment.comment_id);
+      });
+      deleteComment(comment.comment_id);
+    }
+  };
 
   return (
-    <div className='comment-card' >
+    <div className="comment-card">
         <img src={`https://i.pravatar.cc/48?img=${randomId}`} />
-        <p>{comment.author}</p>
-        <p className='comment-time'>{timeStamp}</p>
-        <p className='comment-body'>{comment.body}</p>
-        <button>👍</button>
-        <p className='votes'>{comment.votes}</p>
-        <button>👎</button>
-    </div>
-  )
-}
+        <p className="grid-author">{comment.author}</p>
+        <p className="grid-time">{timeStamp}</p>
+        <p className="grid-body">{comment.body}</p>
 
-export default CommentCard
+        {currentUser === comment.author && (
+          <button
+            type="button"
+            className="btn-delete grid-delete"
+            onClick={handleDeleteComment}>
+            Delete
+          </button>
+        )}
+
+        <button className="grid-like">👍</button>
+        <p className="grid-votes">{comment.votes}</p>
+        <button className="grid-dislike">👎</button>
+    </div>
+  );
+};
+
+export default CommentCard;
