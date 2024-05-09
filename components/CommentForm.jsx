@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ExpandComment from "./ExpandComment";
 import { postComment } from "../src/api";
 
-const CommentForm = ({ article_id, currentUser, setComments, comments, setIsError }) => {
+const CommentForm = ({ article_id, currentUser, setComments, comments, setIsError, setIsNewComment }) => {
   const [commentInput, setCommentInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [typeError, setTypeError] = useState(false);
@@ -30,6 +30,7 @@ const CommentForm = ({ article_id, currentUser, setComments, comments, setIsErro
       .then((res) => {
         setSuccess(true)
         setComments([newComment, ...comments])
+        setIsNewComment(true)
       })
       .catch((err) => {
         setIsError(true)

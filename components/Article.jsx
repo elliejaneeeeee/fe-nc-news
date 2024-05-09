@@ -42,6 +42,7 @@ const SingleArticle = ({ singleArticle }) => {
           <img src={singleArticle.article_img_url} />
           <p>{singleArticle.body}</p>
           <p>{singleArticle.author}</p>
+          <p>{(singleArticle.created_at).slice(0,10)}</p>
           <p>{articleVotes}</p>
           <button onClick={handleVotes}>Like</button>
           <button onClick={handleVotes}>Dislike</button>
