@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Navigate, useParams } from "react-router-dom";
 import { fetchAllArticles } from "../src/api";
 import ArticleCard from "../components/ArticleCard";
 import TopicCard from "../components/TopicCard";
+import { ErrorContext } from "../contexts/ErrorContext";
 
 const TopicPage = ({ topics }) => {
   const [sortBy, setSortBy] = useState("created_at");
   const [orderBy, setOrderBy] = useState("desc");
   const [articlesByTopic, setArticlesByTopic] = useState([]);
+  const {isError, setIsError} = useContext(ErrorContext)
   const { topic } = useParams();
 
   const handleSortBy = (e) => {
@@ -19,10 +21,18 @@ const TopicPage = ({ topics }) => {
   };
 
   useEffect(() => {
-    fetchAllArticles(topic, sortBy, orderBy).then((res) => {
+    fetchAllArticles(topic, sortBy, orderBy)
+    .then((res) => {
       setArticlesByTopic(res);
-    });
-  }, [topic, sortBy, orderBy]);
+    })
+    .catch((err) => {
+      setIsError(true)
+    })
+  }, [topic, sortBy, orderBy, isError]);
+
+  if (isError) {
+    return <Navigate to="/error" />
+  }
 
   return (
     <>

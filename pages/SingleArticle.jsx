@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Navigate, useParams } from 'react-router-dom'
 import { fetchArticleById } from '../src/api'
 import Article from '../components/Article'
 import Comments from '../components/Comments'
+import { ErrorContext } from '../contexts/ErrorContext'
 
 const SingleArticle = ({ currentUser }) => {
+  const {isError, setIsError} = useContext(ErrorContext)
   const [singleArticle, setSingleArticle] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -17,10 +19,19 @@ const SingleArticle = ({ currentUser }) => {
       setIsLoading(false)
       setSingleArticle(data[0])
     })
+    .catch((err) => {
+      setIsLoading(false)
+      setIsError(true)
+    })
   }, [])
 
+  
   if (isLoading) {
     return <p>Loading...</p>
+  }
+
+  if (isError) {
+    return <Navigate to="/error" />
   }
 
   return (
