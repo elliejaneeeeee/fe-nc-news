@@ -4,10 +4,12 @@ const newsAPI = axios.create({
   baseURL: "https://be-nc-news-2e46.onrender.com/api/",
 });
 
-export const fetchAllArticles = (topic = "") => {
+export const fetchAllArticles = (topic = "", sort_by = 'created_at', order = 'desc') => {
   return newsAPI.get(`articles`, {
     params: {
-      topic
+      topic,
+      sort_by,
+      order
     }
   })
   .then(({ data }) => {

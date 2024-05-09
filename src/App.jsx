@@ -46,7 +46,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<LandingPage articles={articles} topics={topics} />} />
-        <Route path="/articles" element={<Articles articles={articles} />} />
+        <Route path="/articles" element={<Articles articles={articles} setArticles={setArticles}/>} />
         <Route path="/articles/:article_id" element={<SingleArticle currentUser={currentUser} />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/error" element={<ErrorPage />} />
