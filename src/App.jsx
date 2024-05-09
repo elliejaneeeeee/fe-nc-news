@@ -11,11 +11,13 @@ import SignIn from "../pages/SignIn";
 
 import { fetchAllArticles, fetchAllTopics } from "./api";
 import TopicPage from "../pages/TopicPage";
+import { ErrorProvider } from "../contexts/ErrorContext";
 
 function App() {
   const [articles, setArticles] = useState([]);
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [isError, setIsError] = useState(false)
   const [currentUser, setCurrentUser] = useState('jessjelly')
 
   useEffect(() => {
@@ -41,20 +43,22 @@ function App() {
   }
 
   return (
-    <div className="app">
-      <NavBar />
+    <ErrorProvider value={isError}>
+      <div className="app">
+        <NavBar />
 
-      <Routes>
-        <Route path="/" element={<LandingPage articles={articles} topics={topics} />} />
-        <Route path="/articles" element={<Articles articles={articles} setArticles={setArticles}/>} />
-        <Route path="/articles/:article_id" element={<SingleArticle currentUser={currentUser} />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/error" element={<ErrorPage />} />
-        <Route path="/topics/:topic" element={<TopicPage topics={topics}/>} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<LandingPage articles={articles} topics={topics} />} />
+          <Route path="/articles" element={<Articles articles={articles} setArticles={setArticles}/>} />
+          <Route path="/articles/:article_id" element={<SingleArticle currentUser={currentUser} />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/topics/:topic" element={<TopicPage topics={topics}/>} />
+          <Route path="/*" element={<ErrorPage />} />
+        </Routes>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </ErrorProvider>
   );
 }
 

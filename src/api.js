@@ -15,6 +15,9 @@ export const fetchAllArticles = (topic = "", sort_by = 'created_at', order = 'de
   .then(({ data }) => {
     return data.articles;
   })
+  .catch((err) => {
+    throw err
+  })
 };
 
 export const fetchAllTopics = () => {
@@ -28,6 +31,9 @@ export const fetchArticleById = (articleId) => {
   return newsAPI.get(`articles/${articleId}`)
   .then(({ data }) => {
     return data.article;
+  })
+  .catch((err) => {
+    throw err
   })
 };
 
