@@ -1,124 +1,142 @@
 .app {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+p {
+  margin: 0;
 }
 
 .article-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 18rem);
-    grid-template-rows: repeat(auto-fill, 18rem);
-    column-gap: 2rem;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 18rem);
+  grid-template-rows: repeat(auto-fill, 18rem);
+  column-gap: 2rem;
+  justify-content: center;
 }
 
 .article-card img {
-    width: 18rem;
+  width: 18rem;
 }
 
 .article-scroll {
-    display: flex;
-    gap: 0.3rem;
-    max-height: 34rem;
-    overflow: scroll;
+  display: flex;
+  gap: 0.3rem;
+  max-height: 34rem;
+  overflow: scroll;
 }
 
 .join-btn {
-    border-style: none;
-    background-color: inherit;
-    font-size: 3rem;
-    margin-bottom: 7rem;
-    border: 2px solid black;
+  border-style: none;
+  background-color: inherit;
+  font-size: 3rem;
+  margin-bottom: 7rem;
+  border: 2px solid black;
 }
 
 .topics {
-    margin-bottom: 5rem;
-
+  margin-bottom: 5rem;
 }
 
 .topic-card {
-    display: inline;
-    border: 0.2rem solid black;
-    margin-right: 2rem;
-    padding: 0.3rem;
+  display: inline;
+  border: 0.2rem solid black;
+  margin-right: 2rem;
+  padding: 0.3rem;
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    background-color: red;
-    text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: red;
+  text-align: center;
 }
 
 .landing-header {
-    margin-bottom: 10rem;
+  margin-bottom: 10rem;
 }
 
 .recommended {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .comments-container {
-    display: flex;
-    border: 2px solid black;
-    padding: 0.5rem;
-    flex-direction: column;
-}
-
-.comment-body{
-    display: block;
-    width: 100%;
-    margin: 0;
+  display: flex;
+  border: 2px solid black;
+  padding: 0.5rem;
+  flex-direction: column;
 }
 
 .comment-card {
-    display: flex;
-    border: 2px solid red;
-    flex-wrap: wrap;
+  display: grid;
+  row-gap: 0.2rem;
+  column-gap: 0.2rem;
+  grid-template-columns: repeat(3, 0.1fr) 2fr 0.1fr;
+  grid-template-rows: repeat(2, 0.1fr) auto 0.5fr;
+  grid-template-areas:
+    "img author author . delete"
+    "img time time . ."
+    "body body body body body"
+    "like votes dislike . .";
+  border: 1px solid red;
 }
 
 .comment-card img {
-    height: 48px;
-    margin-right: 0.5rem;
+  display: inline;
+  height: 48px;
+  width: 48px;
+  grid-area: img;
 }
 
-/* .comment-card button {
-    border: none;
-    background-color: inherit;
-} */
-
-.comment-time {
-    margin-left: 0.5rem;
-    font-size: 0.7rem;
-    display: inline;
+.grid-author {
+  grid-area: author;
 }
 
-.votes {
-    display: block;
-    margin: 0;
+.grid-time {
+    font-size: 0.6rem;
+  grid-area: time;
+}
+
+.grid-body {
+  grid-area: body;
+}
+
+.grid-like {
+  grid-area: like;
+}
+.grid-votes {
+    grid-area: votes;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid-dislike {
+  grid-area: dislike;
+}
+.grid-delete {
+  grid-area: delete;
 }
 
 .single-article img {
-    width: 100%;
+  width: 100%;
 }
 
 #comment-body {
-    display: block;
-    width: 95%;
-    height: 2rem;
+  display: block;
+  width: 95%;
+  height: 2rem;
 }
 
 .error {
-    color: red;
+  color: red;
 }
 
 .success {
-    color: green;
+  color: rgb(21, 14, 224);
 }
-
-

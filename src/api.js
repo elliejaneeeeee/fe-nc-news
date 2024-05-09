@@ -25,16 +25,16 @@ export const fetchArticleById = (articleId) => {
   })
 };
 
-export const fetchCommentsByArticle = (article_id) => {
-  return newsAPI.get(`articles/${article_id}/comments`)
+export const fetchCommentsByArticle = (articleId) => {
+  return newsAPI.get(`articles/${articleId}/comments`)
   .then(({ data }) => {
     const {comments} = data
     return comments
   })
 };
 
-export const updateArticleVotes = (article_id, num) => {
-  return newsAPI.patch(`articles/${article_id}`, {
+export const updateArticleVotes = (articleId, num) => {
+  return newsAPI.patch(`articles/${articleId}`, {
     inc_votes: num
   })
   .then(({ data } ) => {
@@ -43,9 +43,19 @@ export const updateArticleVotes = (article_id, num) => {
   })
 };
 
-export const postComment = (article_id, comment) => {
-  return newsAPI.post(`articles/${article_id}/comments`, comment)
+export const postComment = (articleId, comment) => {
+  return newsAPI.post(`articles/${articleId}/comments`, comment)
   .then((res) => {
     return res
+  })
+}
+
+export const deleteComment = (commentId) => {
+  return newsAPI.delete(`comments/${commentId}`)
+  .then((res) => {
+    return res
+  })
+  .catch((err) => {
+    return err
   })
 }
