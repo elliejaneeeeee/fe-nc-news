@@ -107,4 +107,18 @@
     width: 100%;
 }
 
+#comment-body {
+    display: block;
+    width: 95%;
+    height: 2rem;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
 

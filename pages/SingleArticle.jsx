@@ -4,7 +4,7 @@ import { fetchArticleById } from '../src/api'
 import Article from '../components/Article'
 import Comments from '../components/Comments'
 
-const SingleArticle = () => {
+const SingleArticle = ({ currentUser }) => {
   const [singleArticle, setSingleArticle] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -26,7 +26,7 @@ const SingleArticle = () => {
   return (
     <>
       <Article singleArticle={singleArticle}/>
-      <Comments article_id={article_id}/>
+      <Comments article_id={article_id} currentUser={currentUser}/>
     </>
   )
 }

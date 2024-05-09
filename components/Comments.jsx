@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { fetchCommentsByArticle } from '../src/api'
 import CommentCard from './CommentCard'
+import CommentForm from './CommentForm'
 
-const Comments = ({ article_id }) => {
+const Comments = ({ article_id, currentUser }) => {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
@@ -12,8 +13,10 @@ const Comments = ({ article_id }) => {
         })
     }, [])
 
+
   return (
     <div className='comments-container'>
+        <CommentForm article_id={article_id} currentUser={currentUser} setComments={setComments} comments={comments}/>
         {comments.map((comment) => {
             return <CommentCard key={comment.comment_id} comment={comment} />
         })}
