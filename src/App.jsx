@@ -10,6 +10,7 @@ import ErrorPage from "../pages/ErrorPage";
 import SignIn from "../pages/SignIn";
 
 import { fetchAllArticles, fetchAllTopics } from "./api";
+import TopicPage from "../pages/TopicPage";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -49,6 +50,7 @@ function App() {
         <Route path="/articles/:article_id" element={<SingleArticle currentUser={currentUser} />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/error" element={<ErrorPage />} />
+        <Route path="/topics/:topic" element={<TopicPage topics={topics}/>} />
       </Routes>
 
       <Footer />
