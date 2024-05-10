@@ -3,12 +3,12 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <ul className="nav-links">
+    <ul aria-label="navigation menu" className="nav-bar">
       <li>
-        <NavLink to="/">Logo Here</NavLink>
+        <NavLink to="/"><img alt="The HiveMind Hub logo" src='public/Logo.png' /></NavLink>
       </li>
       <li>
-        <NavLink to="/sign-in">Sign In</NavLink>
+        <NavLink to="/sign-in" className='nav-sign-in'>Sign In</NavLink>
       </li>
     </ul>
   );

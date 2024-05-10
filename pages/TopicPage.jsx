@@ -36,21 +36,25 @@ const TopicPage = ({ topics }) => {
   }
 
   return (
-    <>
-      <div className="options-bar">
-        <label htmlFor="sort">Sort By: </label>
-        <select id="sort" onChange={handleSortBy}>
-          <option value="created_at">New</option>
-          <option value="comment_count">Hot</option>
-          <option value="votes">Highest Rated</option>
-        </select>
+    <main>
+      <section className="options-bar">
+        <article className="sort">
+          <label htmlFor="sort">Sort By: </label>
+          <select id="sort" onChange={handleSortBy}>
+            <option value="created_at">New</option>
+            <option value="comment_count">Hot</option>
+            <option value="votes">Highest Rated</option>
+          </select>
+        </article>
 
-        <label htmlFor="order">Order By: </label>
-        <select id="order" onChange={handleOrderBy}>
-          <option value="desc">Descending</option>
-          <option value="asc">Ascending</option>
-        </select>
-      </div>
+        <article className="order">
+          <label htmlFor="order">Order By: </label>
+          <select id="order" onChange={handleOrderBy}>
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+          </select>
+        </article>
+      </section>
 
       <section className="topics">
         {topics.map((topic) => {
@@ -62,7 +66,7 @@ const TopicPage = ({ topics }) => {
           return <ArticleCard key={article.article_id} article={article} />;
         })}
       </section>
-    </>
+    </main>
   );
 };
 

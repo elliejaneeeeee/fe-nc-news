@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className='footer'>
-        NC-News made by Ellie Stapley
+        HiveMind Hub - Ellie Stapley 2024
     </div>
   )
 }

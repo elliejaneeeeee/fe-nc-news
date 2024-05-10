@@ -43,8 +43,8 @@ const CommentForm = ({ article_id, currentUser, setComments, comments, setIsErro
   }
 
   return (
-    <div className="comment-form">
-      <form>
+    <section aria-label="Comment section" className="comment-form">
+      <form aria-label="Add a comment">
         <label htmlFor="comment-body">Add a comment...</label>
         <input
           type="textarea"
@@ -57,11 +57,11 @@ const CommentForm = ({ article_id, currentUser, setComments, comments, setIsErro
         {success && <div className="success">Success!</div>}
 
         <ExpandComment isOpen={isOpen}>
-          <button type='button' onClick={() => setIsOpen(false)}>Cancel</button>
-          <button type='submit' onClick={handleCommentPost}>Comment</button>
+          <button aria-label="Cancel comment" type='button' onClick={() => setIsOpen(false)}>Cancel</button>
+          <button aria-label="Post comment" type='submit' onClick={handleCommentPost}>Comment</button>
         </ExpandComment>
       </form>
-    </div>
+    </section>
   );
 };
 
