@@ -74,3 +74,13 @@ export const deleteComment = (commentId) => {
     throw err
   })
 }
+
+export const fetchAllUsers = () => {
+  return newsAPI.get(`users`)
+  .then(({ data }) => {
+    return data
+  })
+  .catch((err) => {
+    throw err
+  })
+}

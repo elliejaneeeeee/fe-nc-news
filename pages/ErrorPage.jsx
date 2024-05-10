@@ -1,7 +1,14 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const ErrorPage = () => {
-  return <h1>Oh No! An Error!</h1>
+  return (
+    <main className='error-page'>
+      <h1>Oh No!</h1>
+      <h2>Looks like you're lost...</h2>
+      <NavLink to='/'>Let us take you back home 🏠</NavLink>
+    </main>
+  )
 }
 
 export default ErrorPage

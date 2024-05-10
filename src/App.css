@@ -16,7 +16,7 @@
 
 @keyframes grow {
   0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+  100% { transform: scale(1.05); }
 }
 
 
@@ -180,7 +180,7 @@ body {
 .main-scroll {
   display: flex;
   gap: 0.5rem;
-  max-height: 34rem;
+  min-height: 10rem;
   overflow: scroll;
   margin-bottom: 5rem;
 }
@@ -215,7 +215,6 @@ body {
 }
 
 .footer {
-  bottom: 0;
   width: 100%;
   text-align: center;
   font-size: 1rem;
@@ -453,11 +452,69 @@ body {
 
 
 .error {
-  color: red;
+  color: var(--main-primary-text);
+  background-color: #d32f2f;
+  border-radius: 3rem;
+  padding: 1rem;
 }
 
 .success {
-  color: rgb(21, 14, 224);
+  color: var(--main-primary-text);
+  background-color: var(--main-primary);
+  border-radius: 3rem;
+  padding: 1rem;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: var(--main-primary-font-family);
+  color: var(--main-primary-text);
+}
+
+.error-page h1 {
+  color: var(--main-primary);
+  font-weight: 700;
+  font-size: 10rem;
+  text-transform: uppercase;
+  margin: 5rem 0 3rem 0;
+}
+
+.error-page a{
+  display: inline-flex;
+  width: 50%;
+  justify-content: center;
+  text-decoration: none;
+  background-color: var(--main-background);
+  border: 1px solid var(--main-secondary-text);
+  border-radius: 3rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+  color: var(--main-secondary-text);
+  margin: 5rem 0 5rem 0;
+  align-self: center;
+}
+
+.error-page a:hover{
+  border-color: var(--main-primary);
+  background-color: var(--main-primary);
+  color: var(--main-background);
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-primary-text);
+  border: 2px solid  var(--main-primary);
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+
+.login-container h1 {
+  text-align: left;
 }
 
 @media only screen and (max-width: 700px) {
@@ -490,4 +547,10 @@ body {
     border: 1px solid var(--main-primary-text)
   }
   
+}
+
+@media only screen and (min-width: 1500px) {
+  body {
+    margin: 2em 20rem 10rem 20rem;
+  }
 }

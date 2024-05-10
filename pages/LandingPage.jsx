@@ -15,16 +15,29 @@ const LandingPage = ({ articles, topics }) => {
         <h1>Where ideas connect: Join the conversation.</h1>
         <h2>HiveMind Hub</h2>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero,
-          impedit. Quisquam voluptatibus consequuntur, illum rerum impedit
-          deleniti tenetur aut veritatis labore laborum necessitatibus maxime
-          doloremque ipsum eum maiores ducimus est perferendis sit aliquid?
-          Porro, quaerat alias delectus facere aliquid omnis! Exercitationem
-          consequatur omnis ea explicabo. Dolores dolorem cum aliquid sapiente?
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
+          deleniti optio exercitationem numquam modi quo ea repellat doloribus
+          facere soluta, nostrum architecto non delectus deserunt eius ut
+          laudantium rem officia ex. Maiores, sapiente. Laboriosam sapiente ea
+          rerum impedit! Sequi, quo minus. Ullam numquam nostrum, dolorem sunt
+          ad modi perspiciatis nobis obcaecati exercitationem, debitis itaque
+          quisquam quaerat accusantium? Non est vel harum molestiae dolore rem
+          aperiam impedit quidem, aspernatur, doloribus tempore totam nesciunt
+          voluptatibus minima iure. Facilis ullam quis dolorem iure rem ducimus
+          totam sapiente nesciunt praesentium aperiam assumenda veniam ex id
+          alias magnam eius, quod impedit beatae odit? Pariatur mollitia
+          voluptas enim, cum a nesciunt omnis quod, atque ea excepturi
+          necessitatibus beatae eum non commodi quis? In, adipisci velit at
+          dicta eligendi eos necessitatibus officiis veniam soluta dolor culpa,
+          dolores quia. Voluptates hic error ipsum libero iure. In odit debitis
+          illum labore autem repudiandae cum, placeat omnis provident harum?
+          Exercitationem?
         </p>
       </section>
 
-      <button aria-label="Sign Up" className="join-btn">Join the community <FontAwesomeIcon icon={faArrowTurnUp} /></button>
+      <NavLink to='/sign-up' aria-label="Sign Up" className="join-btn">
+        Join the community <FontAwesomeIcon icon={faArrowTurnUp} />
+      </NavLink>
 
       <article className="topics">
         {topics.map((topic) => {
@@ -34,7 +47,9 @@ const LandingPage = ({ articles, topics }) => {
 
       <section className="suggested">
         <h3>Recommended</h3>
-        <NavLink to="/articles">See all Articles <FontAwesomeIcon icon={faArrowTurnUp} /></NavLink>
+        <NavLink to="/articles">
+          See all Articles <FontAwesomeIcon icon={faArrowTurnUp} />
+        </NavLink>
       </section>
 
       <article className="main-scroll">
