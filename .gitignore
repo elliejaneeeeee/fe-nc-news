@@ -25,3 +25,6 @@ dist-ssr
 
 endpoints.json
 app.test.js
+
+# Local Netlify folder
+.netlify
