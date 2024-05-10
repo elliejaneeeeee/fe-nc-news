@@ -1,7 +1,7 @@
 # Hivemind Hub!         
 
 ## Hosted-version  
-[HivemindHub](https://hivemindhub.netlify.app/articles)     
+[HivemindHub](https://hivemindhub.netlify.app)     
 
 ## Summary  
 This project is a **front-end** SPA built using *Node*, *React*, *Vite*, *React-Router* and *Axios* for a forum-based platform.  
