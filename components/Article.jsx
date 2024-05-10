@@ -1,35 +1,53 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import {updateArticleVotes} from '../src/api'
 import { Navigate } from 'react-router-dom'
+import { ErrorContext } from '../contexts/ErrorContext'
 
 const SingleArticle = ({ singleArticle }) => {
   const [articleVotes, setArticlevotes] = useState(singleArticle.votes)
-  const [hasLiked, setHasLiked] = useState(false)
-  const [hasDisliked, setHasDisliked] = useState(false)
-  const [error, setError] = useState(false)
+  const [activeBtn, setActiveBtn] = useState("")
+  const {isError, setIsError} = useContext(ErrorContext)
 
-  const handleVotes = (e) =>  {
-    if (e.target.innerText === 'Like' && !hasLiked) {
-      setArticlevotes((articleVotes) => articleVotes + 1)
-      setHasLiked(true)
-      setHasDisliked(false)
-      updateArticleVotes(singleArticle.article_id, 1)
+
+  const handleVotes = (reaction) => {
+    if (activeBtn === "") {
+      if (reaction === 'like') {
+        setActiveBtn('like')
+        setArticlevotes((articleVotes) => articleVotes + 1)
+        updateArticleVotes(singleArticle.article_id, 1)
+        .catch((err) => {
+          setError(true)
+        })
+      }
+      else if (reaction === 'dislike') {
+        setActiveBtn('dislike')
+        setArticlevotes((articleVotes) => articleVotes - 1)
+        updateArticleVotes(singleArticle.article_id, -1)
+        .catch((err) => {
+          setError(true)
+        })
+      }
+    }
+    if (activeBtn === 'like') {
+      setActiveBtn("")
+      setArticlevotes((articleVotes) => articleVotes - 1)
+      updateArticleVotes(singleArticle.article_id, -1)
       .catch((err) => {
         setError(true)
       })
     }
-    else if (e.target.innerText === 'Dislike' && !hasDisliked) {
-      setArticlevotes((articleVotes) => articleVotes - 1)
-      setHasDisliked(true)
-      setHasLiked(false)
-      updateArticleVotes(singleArticle.article_id, -1)
+    else if (activeBtn === 'dislike') {
+      setActiveBtn("")
+      setArticlevotes((articleVotes) => articleVotes + 1)
+      updateArticleVotes(singleArticle.article_id, 1)
       .catch((err) => {
         setError(true)
       })
     }
   }
 
-  if(error) {
+  if(isError) {
+    setIsError(false)
     return <Navigate to="/error" />
   }
 
@@ -44,8 +62,8 @@ const SingleArticle = ({ singleArticle }) => {
           <p>{singleArticle.author}</p>
           <p>{(singleArticle.created_at).slice(0,10)}</p>
           <p>{articleVotes}</p>
-          <button onClick={handleVotes}>Like</button>
-          <button onClick={handleVotes}>Dislike</button>
+          <button className={activeBtn === 'like' ? 'btn-active' : 'btn'} onClick={() => handleVotes('like')}>Like</button>
+          <button className={activeBtn === 'dislike' ? 'btn-active' : 'btn'} onClick={() => handleVotes('dislike')}>Dislike</button>
         </div>
 
     </>

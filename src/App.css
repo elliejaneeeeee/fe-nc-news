@@ -141,3 +141,12 @@ p {
 .success {
   color: rgb(21, 14, 224);
 }
+
+.btn {
+  color: black;
+}
+
+.btn-active {
+  color: blue;
+}
+

@@ -31,6 +31,7 @@ const TopicPage = ({ topics }) => {
   }, [topic, sortBy, orderBy, isError]);
 
   if (isError) {
+    setIsError(false)
     return <Navigate to="/error" />
   }
 
