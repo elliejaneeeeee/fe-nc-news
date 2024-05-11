@@ -9,6 +9,7 @@ import SingleArticle from "../pages/SingleArticle";
 import ErrorPage from "../pages/ErrorPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import LoadingScreen from "../components/LoadingScreen";
 
 import { fetchAllArticles, fetchAllTopics } from "./api";
 import TopicPage from "../pages/TopicPage";
@@ -40,7 +41,7 @@ function App() {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>
+    return <LoadingScreen />
   }
 
   return (

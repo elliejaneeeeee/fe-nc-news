@@ -4,6 +4,7 @@ import { fetchArticleById } from "../src/api";
 import Article from "../components/Article";
 import Comments from "../components/Comments";
 import { ErrorContext } from "../contexts/ErrorContext";
+import LoadingScreen from "../components/LoadingScreen";
 
 const SingleArticle = ({ currentUser }) => {
   const [singleArticle, setSingleArticle] = useState([]);
@@ -26,7 +27,7 @@ const SingleArticle = ({ currentUser }) => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <LoadingScreen />
   }
 
   if (isError) {

@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { fetchCommentsByArticle } from '../src/api'
 import CommentCard from './CommentCard'
 import CommentForm from './CommentForm'
+import LoadingScreen from './LoadingScreen'
 
 const Comments = ({ article_id, currentUser }) => {
     const [comments, setComments] = useState([])
     const [commentDeleted, setCommentDeleted] = useState(false)
     const [isError, setIsError] = useState(false)
     const [isNewComment, setIsNewComment] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     
     useEffect(() => {
-        setIsLoading(true)
         fetchCommentsByArticle(article_id)
         .then((data) => {
             setComments(data)
@@ -23,7 +23,7 @@ const Comments = ({ article_id, currentUser }) => {
         })
     }, [isNewComment])
 
-    if (isLoading) return <p>Loading...</p>
+    if (isLoading) return <LoadingScreen />
 
     const checkComments = () => {
         if (comments.length > 0 && isError) {
